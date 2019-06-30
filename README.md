@@ -12,7 +12,7 @@ composer require itshkacomua/text-editing
 ### Basic usage example
 ```php
 <?php
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 use Text\Text;
 
