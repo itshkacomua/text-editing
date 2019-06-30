@@ -14,7 +14,7 @@ composer require itshkacomua/text-editing
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
-use GDText\Box;
+use Text\Text;
 
-$text = new Box($text);
-$text->getText($number);
+$obj_text = new Text($text);
+$obj_text->TextClipping($number_characters, $ending);
