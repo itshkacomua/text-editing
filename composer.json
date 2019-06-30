@@ -1,0 +1,15 @@
+{
+  "name": "itshkacomua/text-editing",
+  "description": "Advanced text editor, text clipping, conversion, etc.",
+  "license": "MIT",
+  "require": {
+    "php": ">7.*"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Text\\": "class/"
+    }
+  }
+}
