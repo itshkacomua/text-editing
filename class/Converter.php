@@ -8,11 +8,11 @@ namespace Text;
  *
  * @package text-editing
  * @author Andrey Kravchenko <progandrey@gmail.com>
- * @version 1.0
+ * @version 1.0.2
  */
 class Converter
 {
-    public const ERRJR_TEXT = 'there is no such number ';
+    public const ERROR_TEXT = 'there is no such number ';
 
     /**
      * Array Roman numbers to Arabic.
@@ -67,16 +67,16 @@ class Converter
     /**
      * Converter Roman numbers to Arabic.
      */
-    public function RomanNumbersInArabic(string $numbers)
+    public function romanNumbersInArabic(string $numbers)
     {
-        return romanNumbersInArabic[$numbers] ?? ERRJR_TEXT . 'arabic';
+        return $romanNumbersInArabic[$numbers] ?? ERROR_TEXT . 'arabic';
     }
 
     /**
      * Converter Roman numbers to Arabic.
      */
-    public function ArabicNumbersInRoman(string $numbers)
+    public function arabicNumbersInRoman(int $numbers)
     {
-        return arabicNumbersInRoman[$numbers] ?? ERRJR_TEXT . 'roman';
+        return $arabicNumbersInRoman[$numbers] ?? ERROR_TEXT . 'roman';
     }
 }

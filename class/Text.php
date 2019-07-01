@@ -3,6 +3,13 @@ declare(ticks=1);
 
 namespace Text;
 
+/**
+ * Text.
+ *
+ * @package text-editing
+ * @author Andrey Kravchenko <progandrey@gmail.com>
+ * @version 1.0.2
+ */
 class Text
 {
     /**
@@ -30,41 +37,24 @@ class Text
     }
 
     /**
-     * Text Clipping
+     * Text clipping
+     * @param $strlen
+     * @param $params
      */
-    public function TextClipping(int $number_characters, $ending)
+    public function clipping(int $strlen, $params = ['clipping' => 'y', 'three_dots' => 'y'])
     {
-        $num = strlen($this->text);
-
-        if ($number_characters < $num) {
-            return substr($this->text, 0, $number_characters) . ($ending ?? ' ...');
-        } else {
-            return $this->text;
-        }
-    }
-
-    /**
-     * Text clipping method
-     * @param $date_begin
-     * @param $date_end
-     */
-    function СlippingЕext($text, $strlen, $params = ['clipping' => 'y', 'three_dots' => 'y'])
-    {
-        //$text=strip_tags($text);
-        //$text=htmlspecialchars($text);
-        $text_strlen = mb_strlen($text);
+        $text_strlen = mb_strlen($this->text);
         $arr_test_elements = ['b', 'span', 'p', 'i', 'div'];
 
         if ($params['clipping'] == 'y' && $text_strlen > $strlen) {
-            $pos = mb_strpos($text, ' ', $strlen);
+            $pos = mb_strpos($this->text, ' ', $strlen);
 
             if ($pos > 0)
-                $return = mb_substr($text, 0, $pos);
+                $return = mb_substr($this->text, 0, $pos);
             else
-                $return = $text;
-            //$return = mb_substr($text, 0, strrpos(substr(htmlspecialchars($text),0, $strlen), ' '));
+                $return = $this->text;
         } else
-            $return = $text;
+            $return = $this->text;
 
         if ($params['three_dots'] == 'y' && $text_strlen > $strlen)
             $return .= ' ...';
@@ -87,12 +77,21 @@ class Text
      * @param int $number
      * @return string
      */
-    function GetSeveralHTMLElements($element, $number = 1)
+    public function GetSeveralHTMLElements($element, $number = 1)
     {
         $result = '';
         for ($i = 0; $i < $number; $i++)
             $result .= '</' . $element . '>';
 
         return $result;
+    }
+
+    /**
+     * get Hash
+     * @return bool|string
+     */
+    public function getHash()
+    {
+        return password_hash($this->text, PASSWORD_ARGON2I);
     }
 }
